@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd"><!--dtd文件为约束文件，作为下面xml文件的规范-->
+<configuration>
+    <properties resource="db.properties"/>
+        <typeAliases>
+            <package name="priv.mall.noby.entity"/>
+        </typeAliases>
+
+    <!--    <plugins>-->
+    <!--        &lt;!&ndash;pagehelper插件(分页查询插件)&ndash;&gt;-->
+    <!--        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>-->
+    <!--    </plugins>-->
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <package name="priv.mall.noby.dao"/>
+    </mappers>
+</configuration>

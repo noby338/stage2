@@ -1,0 +1,19 @@
+* Servlet的使用
+    * Servlet的生命周期
+    * Servlet、GenericServlet、HttpServlet之间的继承、实现关系
+    * 配置servlet
+        * 通过web.xml配置
+        * 通过注解配置
+    * (hidden)通过input hidden隐藏域在各个页面之间传递数据
+    * (httpServlet)
+      * 页面的包含
+      * Request对象的使用
+        * 请求头的获取
+        * 解决请求的中文乱码问题（tomcat8以后的get请求无中问乱码问题）
+        * 获取请求参数的几种方式
+        * 获取请求行的各个参数
+        * 请求的转发 
+        * request域
+        * 请求的包含
+      * Response对象的使用
+        * 发送响应、响应字符、设置响应的编码方式1，通过调用response的setContentType()方法

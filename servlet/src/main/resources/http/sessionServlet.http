@@ -1,0 +1,5 @@
+### session的写入
+GET http://localhost:8080/servlet/sessionNote
+
+### session的获取(可测试sesison的钝化和活化)
+GET http://localhost:8080/servlet/sessionNote2

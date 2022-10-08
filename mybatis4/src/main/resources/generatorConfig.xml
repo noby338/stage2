@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--
+    targetRuntime: 执行生成的逆向工程的版本
+    MyBatis3Simple: 生成基本的CRUD（简洁版）
+    MyBatis3: 生成带条件的CRUD（完整版）
+    -->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!--去除生成的注释-->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库的连接信息，按自己要连接的数据库信息填即可 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/stage2"
+                        userId="root"
+                        password="123">
+            <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+        <!-- javaBean的生成策略，按实际路径填写-->
+        <javaModelGenerator targetPackage="priv.note.entity"
+                            targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- SQL映射文件的生成策略，按实际路径填写 -->
+        <sqlMapGenerator targetPackage="priv.note.mapper"
+                         targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- Mapper接口的生成策略，按实际路径填写 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="priv.note.mapper"
+                             targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!-- 逆向分析的表 -->
+        <!--tableName对应数据库中的表名-->
+        <!-- domainObjectName属性指定生成出来的实体类的类名 -->
+        <table tableName="emp" domainObjectName="Emp"/>
+        <table tableName="dep" domainObjectName="Dep"/>
+    </context>
+</generatorConfiguration>

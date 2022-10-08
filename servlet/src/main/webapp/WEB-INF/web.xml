@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!--配置ServletContext初始化参数，getInitParameter()方法调用（区别于init-param，所有的servlet都可用）-->
+    <context-param>
+        <param-name>info2</param-name>
+        <param-value>something2</param-value>
+    </context-param>
+
+    <!--xml方式配置servlet-->
+    <servlet>
+        <!--当前servlet的自定义名字，建议和类名相同-->
+        <servlet-name>ServletNoteName</servlet-name>
+        <!--HttpServletNote类的全限定名-->
+        <servlet-class>note.servlet.ServletNote</servlet-class>
+        <!-- 配置初始化参数,通过ServletConfig中的getInitParameter()方法调用（当前servlet可用） -->
+        <init-param>
+            <param-name>ENCODING</param-name>
+            <param-value>ISO-8859-1</param-value>
+        </init-param>
+        <!--配置servlet创建和初始化的时间（servlet是单例的，多个用户只有一个servlet对象）
+        （1）负整数:第一次访问时创建Servlet对象（init方法在创建servlet类时执行）
+        （2）0或正整数:服务器启动时创建Servlet对象，数字越小优先级越高（推荐）
+         -->
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+
+
+    <servlet-mapping>
+        <!--与servlet中的servlet-name相同-->
+        <servlet-name>ServletNoteName</servlet-name>
+        <!--servlet路径映射-->
+        <url-pattern>/ServletNote</url-pattern>
+    </servlet-mapping>
+
+    <!--设置session的失效时间，默认为30分钟-->
+    <session-config>
+        <session-timeout>30</session-timeout><!--单位为分钟-->
+    </session-config>
+</web-app>

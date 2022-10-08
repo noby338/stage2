@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--导入第三方约束文件，表示本文件在准守xml语法的同时还要准守这里的mybatis-3-mapper.dtd(mybatis的映射文件)文件中制定的语法-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="note.dao.StudentDao"><!--命名空间，一般为映射文件实体类的全限定名-->
+    <!-- 加上cache标签之后表示当前mapper中产生的数据是"可以"被放到二级缓存中 -->
+    <cache readOnly="true"/>
+    <!-- insert标签就是写insert语句,id就为调用该SQL的名字，推荐执行对应SQL的方法名
+	-->
+    <!-- parameterType:
+            方法的参数类型，可以不写。
+            为全限定名。
+     useGeneratedKeys：为true时，表示如果插入的表id以自增列为主键，则插入成功之后使用JDBC的getGeneratedKeys方法获取主键并赋值keyProperty设置的领域模型属性中
+     keyProperty：指明数据库中返回的主键id给实体类中的哪个属性。由于是数据库生成的主键，所以在这个对象持久化到数据库之前是对象中的这个属性是没有属性值的，但是在持久化之后又想使用这个主键.
+     -->
+    <insert id="insert" parameterType="Student" useGeneratedKeys="true" keyProperty="id">
+        insert into student(name, gender, birthday)
+        values (#{name}, #{gender}, #{birthday});
+    </insert>
+    <!--  #{属性名}相当jdbc中使用prepareStatement的?占位符，会对敏感字符进行转译，可避免sql注入   $(属性名)相对于使用字符串拼接，可能会产生sql注入 -->
+    <!-- insert into student values(null,'${name}',${gender},${birthday}) -->
+    <insert id="insertResId">
+        insert into student (name,gender,birthday) values (#{name},#{gender},#{birthday});
+        <!-- selectKey 子标签可以将插入后的主键id赋值给实体对象
+             keyProperty 查询的值赋值给哪个属性
+             resultType: 查询结果的返回值的类型,系统类型有定义好的别名
+             order: 不同的数据库，生成自增主键值的时间不同，
+                     MySQL数据库，先插入数据，在生成主键,使用AFTER
+                     Oracle数据，刚好相反，使用BEFORE
+                     新版本可以不写,框架会自动判断加载的驱动包，使用对应的策略参数
+        -->
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            SELECT @@identity
+        </selectKey>
+    </insert>
+    <update id="update" parameterType="Student">
+        update student
+        set name=#{name},
+            gender=#{gender},
+            birthday=#{birthday}
+        where id = #{id};
+    </update>
+    <delete id="deleteById" parameterType="int">
+        <!-- 参数只有一个，并且是基本类型或者String,#里面的内容叫什么都可以，本质就是一个占位符
+                    id=#{xxx} -->
+        delete from student where id = #{id};
+    </delete>
+    <!-- 查询必须写返回值类型：底层就是反射创建对象，属性赋值 -->
+    <select id="selectById" resultType="note.entity.Student">
+        select *
+        from student
+        where id = #{id};
+    </select>
+    <select id="selectAll" resultType="note.entity.Student">
+        select *
+        from student;
+    </select>
+    <!--使用map为参数传入多个查询参数（对象也可以）-->
+    <select id="selectRangeBirthday" resultType="note.entity.Student">
+        select *
+        from student
+        where birthday between #{dateLow} and #{dateHigh};
+    </select>
+    <!--模糊查询的方法-->
+    <select id="selectLikeName" resultType="note.entity.Student">
+        select *
+        from student
+        where name like '%' #{name} '%';
+    </select>
+    <!--使用自己的对象实现分页查询-->
+    <select id="selectByPage" resultType="Student">
+        <!--SQL中的计算标签bind，SQL中不支持直接计算-->
+        <bind name="startRow" value="(pageNum - 1) * pageSize"/>
+        select * from student limit #{startRow},#{pageSize}
+    </select>
+    <!--使用pageHelper分页查询-->
+    <select id="selectAllByPageHelper" resultType="note.entity.Student">
+        select *
+        from student
+    </select>
+
+
+    <!--转译字符和CDATA区-->
+    <select id="test" resultType="note.entity.Student">
+        select *
+        from student
+        where id &lt; 5
+          and id
+          <![CDATA[
+          >
+          ]]>
+          2
+        /*在sql语句中，小于符号无法直接使用，可以使用&lt;转译字符或者CDATA区解决(idea输入大写CD提示)*/
+    </select>
+
+
+</mapper>

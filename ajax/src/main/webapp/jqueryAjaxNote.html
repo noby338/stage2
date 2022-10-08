@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎注册</title>
+    <link href="css/register.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="form-div">
+    <div class="reg-content">
+        <h1>欢迎注册</h1>
+        <span>已有帐号？</span> <a href="login.html">登录</a>
+    </div>
+    <form id="reg-form" action="#" method="get">
+
+        <table>
+
+            <tr>
+                <td>用户名</td>
+                <td class="inputs">
+                    <input name="username" type="text" id="username">
+                    <br>
+                    <span id="username_err" class="err_msg" style="display: none">用户名已存在</span>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>密码</td>
+                <td class="inputs">
+                    <input name="password" type="password" id="password">
+                    <br>
+                    <span id="password_err" class="err_msg" style="display: none">密码格式有误</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>验证码</td>
+                <td class="inputs">
+                    <input name="checkCode" type="text" id="checkCode">
+                    <img src="imgs/a.jpg">
+                    <a href="#" id="changeImg">看不清？</a>
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="buttons">
+            <input value="注 册" type="submit" id="reg_btn">
+        </div>
+        <br class="clear">
+    </form>
+
+</div>
+
+<script src="js/jquery-3.6.0.js"></script>
+<script>
+    $(function () {
+        $("#username").blur(function () {
+            // jqueryAjax
+            // $.ajax({
+            //     "url": "ajaxServlet",
+            //     "type": "post",
+            //     "data": "username=" + $("#username").val(), //向服务器发送的数据
+            //     "dataType": "text",	//服务器返回的数据类型
+            //     "success": function (result) {  //result服务器返回的数据
+            //         if (result == 'true') {
+            //             $("#username_err").css("display","block");
+            //         } else {
+            //             $("#username_err").css("display","none");
+            //         }
+            //     },
+            //     "error":function () {//服务器代码异常调用该函数
+            //         alert("服务器异常")
+            //     }
+            // });
+
+            // get
+            // $.get("ajaxServlet",
+            //     {username : $("#username").val()},
+            //    function (result) {
+            //         if (result == 'true') {
+            //             $("#username_err").css("display","block");
+            //         } else {
+            //             $("#username_err").css("display","none");
+            //         }
+            // });
+
+            // post
+            // $.post("ajaxServlet",
+            //     {username : $("#username").val()},
+            //     function (result) {
+            //         if (result == 'true') {
+            //             $("#username_err").css("display","block");
+            //         } else {
+            //             $("#username_err").css("display","none");
+            //         }
+            //     });
+
+            //post
+            // $.post({
+            //     "url": "ajaxServlet",
+            //     "data": "username=" + $("#username").val(), //向服务器发送的数据
+            //     "dataType": "text",	//服务器返回的数据类型
+            //     "success": function (result) {  //result服务器返回的数据
+            //         if (result == 'true') {
+            //             $("#username_err").css("display", "block");
+            //         } else {
+            //             $("#username_err").css("display", "none");
+            //         }
+            //     }
+            // });
+
+            //getJson 输入框输入admin
+            $.getJSON({
+                url: "ajaxServlet",
+                data: "username=" + $("#username").val(),
+                success: function (result) {
+                    $.each(result, function (index, item) {
+                        console.log(item)
+                    });
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

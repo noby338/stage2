@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ajaxPra:war">
+    <output-path>$PROJECT_DIR$/ajaxPra/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ajaxPra</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="servletPra-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ajaxPra:war exploded" />
+    </root>
+  </artifact>
+</component>

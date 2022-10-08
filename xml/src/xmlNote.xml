@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--文档类型说明-->
+<dataSource>
+    <driver name="nameValue" id="idValue">com.mysql.jdbc.Driver</driver>
+    <url name="nameValue" id="idValue">jdbc:mysql://localhost:3306/java87</url>
+    <user name="nameValue" id="idValue">root</user>
+    <password name="nameValue" id="idValue">123</password>
+</dataSource>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="filter" />
+        <module name="ajaxPra" />
+        <module name="day12_servlet" />
+        <module name="servletSum" />
+        <module name="upload" />
+        <module name="jsp" />
+        <module name="servlet" />
+        <module name="listener" />
+        <module name="json" />
+        <module name="mybatis4" />
+        <module name="ajax" />
+        <module name="jsp-mod" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="day13" target="1.5" />
+      <module name="filter2" target="1.5" />
+      <module name="jQuery" target="1.5" />
+      <module name="myBookstore" target="6" />
+      <module name="myshop" target="1.6" />
+      <module name="nobymall" target="1.8" />
+      <module name="nobymall2" target="1.8" />
+      <module name="practice" target="1.5" />
+      <module name="servletMod" target="1.5" />
+      <module name="servletPra (1)" target="1.8" />
+      <module name="testmod" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>uploadAjaxNote</title>
+</head>
+<body>
+    <p>
+        <label for="author">上传者：</label>
+        <input type="text" name="author" id="author">
+    </p><br>
+    <p>
+        <label for="upload">上传文件：</label>
+        <input type="file" name="upload" id="upload"><br>
+    </p>
+    <p>
+        <label></label>
+        <input type="submit" value="提交">
+    </p>
+
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script>
+    $(function () {
+        $(":submit").click(function (event) {
+            event.preventDefault();
+            let formData = new FormData();
+            formData.append("upload",$("#upload")[0].files[0]);
+            formData.append("author",$("#author").val());
+            $.ajax({
+                url:"fileUploadAjaxServlet",
+                type:"post",
+                contentType:false,
+                processData:false,
+                data:formData,
+                success:function (result) {
+                    if (result === 'true') {
+                        alert("文件上传成功")
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

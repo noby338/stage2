@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--文档类型说明-->
+<!--导入第三方约束文件，表示本文件在准守xml语法的同时还要准守这里的mybatis-3-config.dtd(mybatis的主配置文件)文件中制定的语法-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd"><!--dtd文件为约束文件，作为下面xml文件的规范-->
+<configuration>
+    <!--导入properties文件，可省略-->
+    <properties resource="db.properties"/>
+    <settings>
+        <!--开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!--启用缓存-->
+        <setting name="cacheEnabled" value="false"/>
+        <!--开启驼峰转换-->
+        <setting name="mapUnderscoreToCamelcase" value="false"/>
+    </settings>
+
+    <!--实体类设置别名-->
+    <typeAliases>
+        <!--单个配置某个全限定名-->
+        <!--        <typeAlias type="entity.Student" alias="Student"></typeAlias>-->
+        <!--统一配置某个包下的全限定名为类的类名-->
+        <package name="note.entity"/>
+    </typeAliases>
+
+    <!--导入插件-->
+    <!--    <plugins>-->
+    <!--        &lt;!&ndash;pagehelper插件(分页查询插件)&ndash;&gt;-->
+    <!--        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>-->
+    <!--    </plugins>-->
+
+    <!-- environments：指定配置环境。例如开发、测试、生产环境 -->
+    <environments default="development"><!--指定默认配置环境为开发环境-->
+        <environment id="development"><!--配置环境，可能有多个-->
+            <transactionManager type="JDBC"/><!--事务管理器(用jdbc的事务管理器来管理)-->
+            <!--配置数据源：数据库来自哪里 -->
+            <dataSource type="POOLED"><!--POOLED：连接池，采用连接池的方式获取连接-->
+                <!--四大参数：properties文件的key使用，分级区分，避免命名冲突-->
+                <property name="driver" value="${jdbc.driver}"/><!--这里的${driver}来自properties-->
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--统一配置某个包下的xml映射文件（xml的文件名是根据接口名创建），使用该方法的映射文件名和接口名必须相同-->
+        <package name="note.dao"/>
+    </mappers>
+</configuration>

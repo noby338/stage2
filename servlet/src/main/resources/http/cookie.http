@@ -1,0 +1,5 @@
+### cookie的创建
+GET http://localhost:8080/servlet/cookieNote
+
+### cookie的获取
+GET http://localhost:8080/servlet/cookieNote2

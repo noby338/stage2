@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axiosNote</title>
+</head>
+<body>
+<!--axios为ajax的框架-->
+<script src="js/axios-0.18.0.js"></script>
+<script>
+    //region axios发送get请求
+    //方式1：
+    // axios({
+    //     method:"get",
+    //     url:"http://localhost:8080/ajax/axiosServlet?username=noby"
+    // }).then(function (resp) {
+    //     alert(resp.data + "方式1");
+    // })
+    //方式2：
+    // axios.get("http://localhost:8080/ajax/axiosServlet?username=noby").then(function (resp) {
+    //     alert(resp.data + "方式2")
+    // })
+    //endregion
+
+    //region axios发送post请求
+    //单个参数方式1：
+    // axios({
+    //     method: "post",
+    //     url:"http://localhost:8080/ajax/axiosServlet",
+    //     data: "username=noby"
+    // }).then(function (resp) {
+    //     alert(resp.data + "单个参数方式1");
+    // })
+    //多个参数方式1：
+    // axios({
+    //     method: "post",
+    //     url: "http://localhost:8080/ajax/axiosServlet",
+    //     data: "username=kace&info=information"
+    // }).then(function (resp) {
+    //     alert(resp.data + "多个参数方式1");
+    // })
+    //多个参数方式2：
+    axios.post("http://localhost:8080/ajax/axiosServlet","username=kace&info=information").then(function (resp) {
+        alert(resp.data + "多个参数方式2");
+    })
+    //endregion
+</script>
+</body>
+</html>

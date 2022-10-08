@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--导入第三方约束文件，表示本文件在准守xml语法的同时还要准守这里的mybatis-3-mapper.dtd(mybatis的映射文件)文件中制定的语法-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="note.dao.ClassTeacherMapDao"><!--命名空间，一般为映射文件实体类的全限定名-->
+    <!--多对多查询方式，连表查询一步-->
+    <select id="selectClaTeaByCtid" resultMap="classTeacherMapMap">
+        select class_teacher_map.id id, class_teacher_map.cid cid, class_teacher_map.tid tid, class_teacher_map.avr_score avr_score, class.name cname, teacher.name tname
+        from class_teacher_map,
+             class,
+             teacher
+        where class_teacher_map.cid = class.id
+          and class_teacher_map.tid = teacher.id
+          and class_teacher_map.id = #{id};
+    </select>
+    <resultMap id="classTeacherMapMap" type="ClassTeacherMap">
+        <id column="id" property="id"/>
+        <result column="avr_score" property="avrScore"/>
+        <association property="aClass" javaType="Class">
+            <id column="cid" property="id"/>
+            <result column="cname" property="name"/>
+        </association>
+        <association property="teacher" javaType="Teacher">
+            <id column="tid" property="id"/>
+            <result column="tname" property="name"/>
+        </association>
+    </resultMap>
+
+    <!--分步查询-->
+    <select id="selectClaTeaByCtid2" resultMap="class_teacher_mapMap2">
+        select *
+        from class_teacher_map
+        where class_teacher_map.id = #{id};
+    </select>
+    <resultMap id="class_teacher_mapMap2" type="ClassTeacherMap">
+        <id column="id" property="id"/>
+        <result column="avr_score" property="avrScore"/>
+        <association property="aClass" javaType="Class" select="selectClassByCid" column="cid"/>
+        <association property="teacher" javaType="Teacher" select="selectTeacherByTid" column="tid"/>
+    </resultMap>
+    <select id="selectClassByCid" resultType="Class">
+        select *
+        from class
+        where id = #{cid};
+    </select>
+    <select id="selectTeacherByTid" resultType="Teacher">
+        select *
+        from teacher
+        where id = #{tid};
+    </select>
+</mapper>

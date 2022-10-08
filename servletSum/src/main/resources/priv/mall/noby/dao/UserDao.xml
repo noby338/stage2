@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.mall.noby.dao.UserDao">
+    <insert id="insert"  useGeneratedKeys="true" keyProperty="id">
+        insert into user(name, password)
+        values (#{name}, #{password});
+    </insert>
+    <select id="queryById" resultType="User">
+        select id, name, password
+        from user
+        where id = #{id}
+    </select>
+    <select id="queryByUser" resultType="User">
+        select id, name, password
+        from user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+        </where>
+    </select>
+</mapper>

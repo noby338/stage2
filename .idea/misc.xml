@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/../myBookstore" />
+    <file type="web" url="file://$PROJECT_DIR$/../myshop" />
+    <file type="web" url="file://$PROJECT_DIR$/../nobymall2" />
+    <file type="web" url="file://$PROJECT_DIR$/ajax" />
+    <file type="web" url="file://$PROJECT_DIR$/filter" />
+    <file type="web" url="file://$PROJECT_DIR$/json" />
+    <file type="web" url="file://$PROJECT_DIR$/jsp" />
+    <file type="web" url="file://$PROJECT_DIR$/jsp-mod" />
+    <file type="web" url="file://$PROJECT_DIR$/listener" />
+    <file type="web" url="file://$PROJECT_DIR$/servlet" />
+    <file type="web" url="file://$PROJECT_DIR$/servletMod" />
+    <file type="web" url="file://$PROJECT_DIR$/servletSum" />
+    <file type="web" url="file://$PROJECT_DIR$/upload" />
+    <file type="web" url="file://$PROJECT_DIR$/upload_download" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/mavenMod/pom.xml" />
+        <option value="$PROJECT_DIR$/maventomcat/pom.xml" />
+        <option value="$PROJECT_DIR$/day12_servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/BookStoreChen/pom.xml" />
+        <option value="$PROJECT_DIR$/servletPra/pom.xml" />
+        <option value="$PROJECT_DIR$/../nobymall/pom.xml" />
+        <option value="$PROJECT_DIR$/upload_download/pom.xml" />
+        <option value="$PROJECT_DIR$/ajax/pom.xml" />
+        <option value="$PROJECT_DIR$/filter/pom.xml" />
+        <option value="$PROJECT_DIR$/json/pom.xml" />
+        <option value="$PROJECT_DIR$/jsp/pom.xml" />
+        <option value="$PROJECT_DIR$/jsp-mod/pom.xml" />
+        <option value="$PROJECT_DIR$/listener/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis4/pom.xml" />
+        <option value="$PROJECT_DIR$/servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/servletSum/pom.xml" />
+        <option value="$PROJECT_DIR$/upload/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

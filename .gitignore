@@ -1,0 +1,12 @@
+# 项目排除路径
+/ajax/target/
+/filter/target/
+/json/target/
+/jsp/target/
+/jsp-mod/target/
+/listener/target/
+/mybatis4/target/
+/out/
+/servlet/target/
+/servletSum/target/
+/upload/target/

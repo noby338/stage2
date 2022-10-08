@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--导入第三方约束文件，表示本文件在准守xml语法的同时还要准守这里的mybatis-3-mapper.dtd(mybatis的映射文件)文件中制定的语法-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="note.dao.ClassDao"><!--命名空间，一般为映射文件实体类的全限定名-->
+    <!--中间表连表查询-->
+    <select id="selectClassById" resultMap="classMap">
+        select class_teacher_map.id  id,
+               class_teacher_map.cid cid,
+               class_teacher_map.tid tid,
+               avr_score,
+               class.name            cname,
+               teacher.name          tname
+        from class_teacher_map,
+             class,
+             teacher
+        where class_teacher_map.cid = class.id
+          and class_teacher_map.tid = teacher.id
+          and class.id = #{id};
+    </select>
+    <resultMap id="classMap" type="Class">
+        <id property="id" column="cid"/>
+        <result property="name" column="cname"/>
+        <collection property="teachers" ofType="Teacher">
+            <id property="id" column="tid"/>
+            <result property="name" column="tname"/>
+        </collection>
+    </resultMap>
+
+    <!--中间表分步查询-->
+    <select id="selectClassById2" resultMap="classMap2">
+        select *
+        from class
+        where id = #{id}
+    </select>
+    <resultMap id="classMap2" type="class">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="teachers" column="id" ofType="teacher" select="selectTeacherByCid"/>
+    </resultMap>
+    <select id="selectTeacherByCid" resultType="teacher">
+        select tid id, name
+        from class_teacher_map,teacher
+        where class_teacher_map.tid = teacher.id
+          and cid = #{id}
+    </select>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--导入第三方约束文件，表示本文件在准守xml语法的同时还要准守这里的mybatis-3-mapper.dtd(mybatis的映射文件)文件中制定的语法-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="note.dao.EmpDao"><!--命名空间，一般为映射文件实体类的全限定名-->
+
+    <!--多对一查询，连接一步查询-->
+    <select id="selectEmpById" resultMap="empMap">
+        select emp.id,emp.name,dep.id did,dep.name dname
+        from emp,
+             dep
+        where emp.did = dep.id
+          and emp.id = #{id};
+    </select>
+    <resultMap id="empMap" type="Emp">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="dep" javaType="Dep">
+            <id property="id" column="did"/>
+            <result property="name" column="dname"/>
+        </association>
+    </resultMap>
+
+    <!--多对一查询，分步查询-->
+    <select id="selectEmpById2" resultMap="empMap2">
+        select *
+        from emp
+        where id = #{id};
+    </select>
+    <resultMap id="empMap2" type="Emp">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="dep" column="did" javaType="Dep" select="selectDepById"/>
+    </resultMap>
+
+    <select id="selectDepById" resultType="Dep">
+        select *
+        from dep
+        where id = #{did};
+    </select>
+
+</mapper>

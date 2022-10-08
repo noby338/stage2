@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="baseServlet:war">
+    <output-path>$PROJECT_DIR$/baseServlet/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>baseServlet</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="baseServlet-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="baseServlet:war exploded" />
+    </root>
+  </artifact>
+</component>

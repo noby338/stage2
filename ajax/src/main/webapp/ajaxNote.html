@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎注册</title>
+    <link href="css/register.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="form-div">
+    <div class="reg-content">
+        <h1>欢迎注册</h1>
+        <span>已有帐号？</span> <a href="login.html">登录</a>
+    </div>
+    <form id="reg-form" action="#" method="get">
+
+        <table>
+
+            <tr>
+                <td>用户名</td>
+                <td class="inputs">
+                    <input name="username" type="text" id="username">
+                    <br>
+                    <span id="username_err" class="err_msg" style="display: none">用户名已存在</span>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>密码</td>
+                <td class="inputs">
+                    <input name="password" type="password" id="password">
+                    <br>
+                    <span id="password_err" class="err_msg" style="display: none">密码格式有误</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>验证码</td>
+                <td class="inputs">
+                    <input name="checkCode" type="text" id="checkCode">
+                    <img src="imgs/a.jpg">
+                    <a href="#" id="changeImg">看不清？</a>
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="buttons">
+            <input value="注 册" type="submit" id="reg_btn">
+        </div>
+        <br class="clear">
+    </form>
+
+</div>
+
+<script src="js/axios-0.18.0.js"></script>
+<script>
+    //region Ajax方法
+    document.querySelector("#username").addEventListener("blur", function () {
+        let username = this.value;
+        //1、XMLHttpRequest对象创建
+        let xhttp;
+        if (window.XMLHttpRequest) {
+            xhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        //2、打开与服务器的连接
+        //get
+        xhttp.open("GET", "http://localhost:8080/ajax/ajaxServlet?username=" + username, true);//true表示使用异步方式，默认为true
+        //这里的绝对路径为了实现前后端分离
+        //3、发送请求
+        xhttp.send();//参数为请求体(get没有请求体，通常不填或者为null)
+        //post
+        // xhttp.open("post", "ajaxServlet", true);
+        //设置请求头（在open（）方法后，send（）方法前）
+        // xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        // xhttp.send("username=" + username)
+
+
+        //4、获取响应
+        xhttp.onreadystatechange = function () {//设置回调函数
+            if (this.readyState === 4 && this.status === 200) {
+                /*
+                readyState表示XMLHttpRequest对象的状态，
+                0状态：XMLHttpRequest对象刚创建，还没有调用open()方法；
+                1状态：请求开始，调用了open()方法，但还没有调用send()方法
+                2状态：调用完了send()方法，还未开始响应；
+                3状态：服务器已经开始响应，但不表示响应结束了！
+                4状态：服务器响应结束！(通常我们只关系这个状态！！！)
+
+                status表示返回请求的状态
+                 */
+                if (this.responseText === "true") {
+                    document.querySelector("#username_err").style.display = "block";
+                } else {
+                    document.querySelector("#username_err").style.display = "none";
+                }
+            }
+        };
+    });
+    //endregion
+
+</script>
+</body>
+</html>

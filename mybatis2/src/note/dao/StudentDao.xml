@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--导入第三方约束文件，表示本文件在准守xml语法的同时还要准守这里的mybatis-3-mapper.dtd(mybatis的映射文件)文件中制定的语法-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="note.dao.StudentDao"><!--命名空间，一般为映射文件实体类的全限定名-->
+
+    <!--动态SQL实现查找-->
+    <select id="selectStudentByIf" resultType="note.entity.Student">
+        select * from student where 1 = 1
+        <if test="id != null and id != ''">
+            and id like '%' #{id} '%'
+        </if>
+        <if test="name != null and name != ''">
+            and name like '%' #{name} '%'
+        </if>
+        <if test="gender != null and gender != ''">
+            and gender like '%' #{gender} '%'
+        </if>
+    </select>
+
+    <select id="selectStudentByWhere" resultType="note.entity.Student">
+        select * from student
+        <where>
+            <if test="id != null and id != ''">
+                and id like '%' #{id} '%'
+            </if>
+            <if test="name != null and name != ''">
+                and name like '%' #{name} '%'
+            </if>
+            <if test="gender != null and gender != ''">
+                and gender like '%' #{gender} '%'
+            </if>
+        </where>
+    </select>
+
+    <!--choose对应java的switch-->
+    <!--when对应java的case-->
+    <!--otherwise对应java的default-->
+    <select id="selectStudentByChoose" resultType="note.entity.Student">
+        select * from student
+        <where>
+            <choose>
+                <when test="id != null and id != ''">
+                    and id like '%' #{id} '%'
+                </when>
+                <when test="name != null and name != ''">
+                    and name like '%' #{name} '%'
+                </when>
+                <when test="gender != null and gender != ''">
+                    and gender like '%' #{gender} '%'
+                </when>
+                <otherwise>
+                    and 1 = !1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+    <!--通过动态SQL实现for循环-->
+    <select id="selectStudentByArray" resultType="note.entity.Student">
+        select * from student
+        <if test="array != null and array.length !=0">
+            where id in
+            <foreach collection="array" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+    </select>
+
+    <!--SQL复用-->
+    <select id="selectStudentByFragment" resultType="note.entity.Student">
+        select <include refid="res"/> from student where id=#{id}
+    </select>
+    <!--可以多个sql语句调用该语句，减少重复代码的书写-->
+    <sql id="res">
+        id,name,gender,birthday
+    </sql>
+
+
+    <!--动态SQL实现查找-->
+    <update id="updateStudentByIf">
+        update student set
+        <if test="name != null and name != ''">
+            name=#{name}
+        </if>
+        <if test="gender != null">
+            and gender=#{gender}
+        </if>
+        <if test="birthday != null">
+            and birthday=#{birthday}
+        </if>
+        where id=#{id}
+    </update>
+</mapper>
