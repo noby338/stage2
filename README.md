@@ -2,7 +2,7 @@
 
 * JavaWeb阶段的学习代码示例
 * 使用的技术版本
- * java 1.8.0_311
+  * java 1.8.0_311
  * 数据库 mysql 5.7.19
  * maven 3.6.1
  * tomcat tomcat7-maven-plugin
