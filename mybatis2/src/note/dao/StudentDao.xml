@@ -6,7 +6,7 @@
 <mapper namespace="note.dao.StudentDao"><!--命名空间，一般为映射文件实体类的全限定名-->
 
     <!--动态SQL实现查找-->
-    <select id="selectStudentByIf" resultType="note.entity.Student">
+    <select id="selectStudentByIf" resultType="Student">
         select * from student where 1 = 1
         <if test="id != null and id != ''">
             and id like '%' #{id} '%'
@@ -19,17 +19,17 @@
         </if>
     </select>
 
-    <select id="selectStudentByWhere" resultType="note.entity.Student">
+    <select id="selectStudentByWhere" resultType="Student">
         select * from student
         <where>
             <if test="id != null and id != ''">
-                and id like '%' #{id} '%'
+                and id=#{id}
             </if>
             <if test="name != null and name != ''">
                 and name like '%' #{name} '%'
             </if>
             <if test="gender != null and gender != ''">
-                and gender like '%' #{gender} '%'
+                and gender=#{gender}
             </if>
         </where>
     </select>
@@ -37,18 +37,18 @@
     <!--choose对应java的switch-->
     <!--when对应java的case-->
     <!--otherwise对应java的default-->
-    <select id="selectStudentByChoose" resultType="note.entity.Student">
+    <select id="selectStudentByChoose" resultType="Student">
         select * from student
         <where>
             <choose>
                 <when test="id != null and id != ''">
-                    and id like '%' #{id} '%'
+                    and id=#{id}
                 </when>
                 <when test="name != null and name != ''">
                     and name like '%' #{name} '%'
                 </when>
                 <when test="gender != null and gender != ''">
-                    and gender like '%' #{gender} '%'
+                    and gender=#{gender}
                 </when>
                 <otherwise>
                     and 1 = !1
@@ -57,7 +57,7 @@
         </where>
     </select>
     <!--通过动态SQL实现for循环-->
-    <select id="selectStudentByArray" resultType="note.entity.Student">
+    <select id="selectStudentByArray" resultType="Student">
         select * from student
         <if test="array != null and array.length !=0">
             where id in
@@ -68,7 +68,7 @@
     </select>
 
     <!--SQL复用-->
-    <select id="selectStudentByFragment" resultType="note.entity.Student">
+    <select id="selectStudentByFragment" resultType="Student">
         select <include refid="res"/> from student where id=#{id}
     </select>
     <!--可以多个sql语句调用该语句，减少重复代码的书写-->
@@ -91,4 +91,33 @@
         </if>
         where id=#{id}
     </update>
+
+    <!--使用自己的对象实现分页查询，bind标签的使用-->
+    <select id="selectByPage" resultType="Student">
+        <!--SQL中的计算标签bind，SQL中不支持直接计算-->
+        <bind name="startRow" value="(pageNum - 1) * pageSize"/>
+        select * from student limit #{startRow},#{pageSize}
+    </select>
+
+    <!--字符实体引用-->
+    <!--CDATA区里的所有内容都会被解析器忽略。(idea输入大写CD提示)-->
+    <select id="selectStudentByLt" resultType="Student">
+        select *
+        from student
+        where id &lt; 5
+    </select>
+
+    <!--CDATA区-->
+    <!--CDATA区里的所有内容都会被解析器忽略。(idea输入大写CD提示)-->
+    <select id="selectStudentByCdata" resultType="Student">
+        select *
+        from student
+        where id
+         <![CDATA[
+                  <
+          ]]>
+              5
+    </select>
+
+
 </mapper>

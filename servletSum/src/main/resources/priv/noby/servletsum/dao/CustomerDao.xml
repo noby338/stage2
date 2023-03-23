@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.noby.servletsum.dao.CustomerDao">
+    <insert id="insertCustomer" parameterType="Customer">
+        insert into customer(cid, cname, gender, birthday, cellphone, email, profession)
+        values (#{cid}, #{cname}, #{gender}, #{birthday}, #{cellphone}, #{email}, #{profession});
+    </insert>
+    <delete id="deleteByCid">
+        delete
+        from customer
+        where cid = #{cid}
+    </delete>
+    <select id="selectById" resultType="priv.noby.servletsum.entity.Customer">
+        select *
+        from customer
+        where cid = #{cid};
+    </select>
+    <select id="selectAllCustomer" resultType="priv.noby.servletsum.entity.Customer">
+        select *
+        from customer;
+    </select>
+    <select id="selectByFilter" resultType="priv.noby.servletsum.entity.Customer">
+        <bind name="recordIndex" value="(page.pageIndex-1) * page.pageSize"></bind>
+        select * from customer
+        <where>
+            <if test="customer.cid != 0">
+                and cid=#{customer.cid}
+            </if>
+            <if test="customer.cname != null and customer.cname != ''">
+                and cname=#{customer.cname}
+            </if>
+            <if test="customer.profession != null and customer.profession != ''">
+                and profession like "%" #{customer.profession} "%"
+            </if>
+            <if test="customer.email != null and customer.email != ''">
+                and email like "%" #{customer.email}
+            </if>
+            <if test="customer.gender != null and customer.gender != ''">
+                and gender=#{customer.gender}
+            </if>
+        </where>
+        limit #{recordIndex},#{page.pageSize}
+    </select>
+    <select id="selectByPage" resultType="priv.noby.servletsum.entity.Customer">
+        <bind name="recordIndex" value="(pageIndex-1) * pageSize"></bind>
+        select * from customer limit #{recordIndex},#{pageSize}
+    </select>
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from customer
+    </select>
+    <select id="selectCountByFilter" resultType="java.lang.Integer">
+        select count(*) from customer
+        <where>
+            <if test="cid != 0">
+                and cid=#{cid}
+            </if>
+            <if test="cname != null and cname != ''">
+                and cname=#{cname}
+            </if>
+            <if test="profession != null and profession != ''">
+                and profession like "%" #{profession} "%"
+            </if>
+            <if test="email != null and email != ''">
+                and email like "%" #{email}
+            </if>
+            <if test="gender != null and gender != ''">
+                and gender=#{gender}
+            </if>
+        </where>
+    </select>
+</mapper>

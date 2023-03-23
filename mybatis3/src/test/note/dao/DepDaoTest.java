@@ -43,7 +43,7 @@ public class DepDaoTest {
      *多对一多表查询（使用连接一步查询）
      */
     @Test
-    public void selectDepByDid() {
+    public void selectDepById() {
         Dep dep = mapper.selectDepById(1);
         System.out.println(dep);
     }
@@ -53,7 +53,7 @@ public class DepDaoTest {
      *多对一多表查询（分步查询）
      */
     @Test
-    public void selectDepByDid2() {
+    public void selectDepById2() {
         Dep dep = mapper.selectDepById2(1);
         System.out.println(dep);
     }

@@ -4,7 +4,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="note.dao.EmpDao"><!--命名空间，一般为映射文件实体类的全限定名-->
-
+    <!-- 加上cache标签之后表示当前mapper中产生的数据是"可以"被放到二级缓存中 -->
+    <cache readOnly="true"/>
     <!--多对一查询，连接一步查询-->
     <select id="selectEmpById" resultMap="empMap">
         select emp.id,emp.name,dep.id did,dep.name dname
@@ -33,7 +34,6 @@
         <result property="name" column="name"/>
         <association property="dep" column="did" javaType="Dep" select="selectDepById"/>
     </resultMap>
-
     <select id="selectDepById" resultType="Dep">
         select *
         from dep

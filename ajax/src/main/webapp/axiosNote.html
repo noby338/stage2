@@ -43,6 +43,12 @@
     axios.post("http://localhost:8080/ajax/axiosServlet","username=kace&info=information").then(function (resp) {
         alert(resp.data + "多个参数方式2");
     })
+
+    axios.post("http://localhost:8080/ajax/axiosServlet",
+        {params:{username:"kace",info:"information"}}
+    ).then(function (resp) {
+        alert(resp.data + "多个参数方式2");
+    })
     //endregion
 </script>
 </body>

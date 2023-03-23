@@ -1,6 +1,5 @@
 package note.dao;
 
-import note.entity.Page;
 import note.entity.Student;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,6 +15,5 @@ public interface StudentDao {
     List<Student> selectAll();
     List<Student> selectRangeBirthday(@Param("dateLow") Date dateLow,@Param("dateHigh") Date dateHigh);
     List<Student> selectLikeName(String name);
-    List<Student> selectByPage(Page page);
     List<Student> selectAllByPageHelper();
 }

@@ -1,5 +1,6 @@
 package note.dao;
 
+import note.entity.Page;
 import note.entity.Student;
 
 import java.util.List;
@@ -47,4 +48,24 @@ public interface StudentDao {
      * @return
      */
     boolean updateStudentByIf(Student student);
+
+    /**
+     * 自定义实现分页查询
+     * bind标签的使用
+     * @param page
+     * @return
+     */
+    List<Student> selectByPage(Page page);
+
+    /**
+     * 通过实体引用转义字符
+     * @return
+     */
+    List<Student> selectStudentByLt();
+
+    /**
+     * 通过Cdata区转义字符
+     * @return
+     */
+    List<Student> selectStudentByCdata();
 }

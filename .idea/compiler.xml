@@ -9,9 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="filter" />
         <module name="ajaxPra" />
+        <module name="upload" />
         <module name="day12_servlet" />
         <module name="servletSum" />
-        <module name="upload" />
         <module name="jsp" />
         <module name="servlet" />
         <module name="listener" />
@@ -25,6 +25,7 @@
       <module name="day13" target="1.5" />
       <module name="filter2" target="1.5" />
       <module name="jQuery" target="1.5" />
+      <module name="mybatis5" target="8" />
       <module name="myBookstore" target="6" />
       <module name="myshop" target="1.6" />
       <module name="nobymall" target="1.8" />

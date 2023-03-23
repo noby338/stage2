@@ -22,19 +22,19 @@
             <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
         <!-- javaBean的生成策略，按实际路径填写-->
-        <javaModelGenerator targetPackage="priv.note.entity"
+        <javaModelGenerator targetPackage="priv.noby.mybatis4.entity"
                             targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
         <!-- SQL映射文件的生成策略，按实际路径填写 -->
-        <sqlMapGenerator targetPackage="priv.note.mapper"
+        <sqlMapGenerator targetPackage="priv.noby.mybatis4.mapper"
                          targetProject=".\src\main\resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
         <!-- Mapper接口的生成策略，按实际路径填写 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="priv.note.mapper"
+                             targetPackage="priv.noby.mybatis4.mapper"
                              targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>

@@ -8,6 +8,11 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * @Description 用于创建数据库链接的工具类
+ * @Author Noby
+ * @Date 2023/3/21 12:42
+ */
 public class SqlSessionUtil {
     static SqlSessionFactory sqlSessionFactory= null;
     public static SqlSession getSqlSession(){

@@ -1,6 +1,7 @@
 package priv.mall.noby.util;
 
 import org.junit.Test;
+import priv.noby.servletsum.util.MybatisUtil;
 
 public class MybatisUtilTest {
 

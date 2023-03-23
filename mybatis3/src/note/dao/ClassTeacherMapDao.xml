@@ -5,7 +5,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="note.dao.ClassTeacherMapDao"><!--命名空间，一般为映射文件实体类的全限定名-->
     <!--多对多查询方式，连表查询一步-->
-    <select id="selectClaTeaByCtid" resultMap="classTeacherMapMap">
+    <select id="selectClaTeaById" resultMap="classTeacherMapMap">
         select class_teacher_map.id id, class_teacher_map.cid cid, class_teacher_map.tid tid, class_teacher_map.avr_score avr_score, class.name cname, teacher.name tname
         from class_teacher_map,
              class,
@@ -28,12 +28,12 @@
     </resultMap>
 
     <!--分步查询-->
-    <select id="selectClaTeaByCtid2" resultMap="class_teacher_mapMap2">
+    <select id="selectClaTeaById2" resultMap="classTeacherMapMap2">
         select *
         from class_teacher_map
         where class_teacher_map.id = #{id};
     </select>
-    <resultMap id="class_teacher_mapMap2" type="ClassTeacherMap">
+    <resultMap id="classTeacherMapMap2" type="ClassTeacherMap">
         <id column="id" property="id"/>
         <result column="avr_score" property="avrScore"/>
         <association property="aClass" javaType="Class" select="selectClassByCid" column="cid"/>

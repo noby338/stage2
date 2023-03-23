@@ -1,7 +1,8 @@
 package note.dao.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import note.dao.StudentDao;
-import note.dao.StudentDao2;
 import note.entity.Student;
 import note.util.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 自动映射
@@ -57,6 +59,7 @@ public class StudentDaoTest2 {
         System.out.println("before:" + student);
         studentDao.insert(student);
         System.out.println("after:" + student);
+        sqlSession.commit();
         sqlSession.close();
     }
 
@@ -75,6 +78,7 @@ public class StudentDaoTest2 {
         System.out.println("before:" + student);
         studentDao.insertResId(student);
         System.out.println("after:" + student);
+        sqlSession.commit();
         sqlSession.close();
     }
 
@@ -110,7 +114,7 @@ public class StudentDaoTest2 {
             e.printStackTrace();
         }
         System.out.println(studentDao.update(new Student(6, "kace", true, date)));
-//        sqlSession.commit();
+        sqlSession.commit();
         sqlSession.close();
     }
 
@@ -156,13 +160,16 @@ public class StudentDaoTest2 {
     }
 
     /**
-     * 单个查询使用mybatis注解
+     * 使用pageHelper分页查询
      */
     @Test
-    public void testSelectStudentById2() {
-        StudentDao2 mapper = sqlSession.getMapper(StudentDao2.class);
-        System.out.println("mapper.selectById(3) = " +
-                mapper.selectById2(3));
+    public void testSelectAllByPageHelper() {
+        PageInfo<Student> pageInfo;
+        PageHelper.startPage(1, 4);
+        List<Student> studentList = studentDao.selectAllByPageHelper();
+        pageInfo = new PageInfo<>(studentList);
+        System.out.println("pageInfo = " + pageInfo);
         sqlSession.close();
     }
+
 }

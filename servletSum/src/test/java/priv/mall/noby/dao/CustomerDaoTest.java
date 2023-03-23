@@ -4,8 +4,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import priv.mall.noby.entity.Customer;
-import priv.mall.noby.util.MybatisUtil;
+import priv.noby.servletsum.dao.CustomerDao;
+import priv.noby.servletsum.entity.Customer;
+import priv.noby.servletsum.util.MybatisUtil;
 
 import java.util.Random;
 
@@ -47,6 +48,5 @@ public class CustomerDaoTest {
     @Test
     public void testSelectById() {
         Customer customer = mapper.selectById(1);
-        System.out.println(customer);
     }
 }

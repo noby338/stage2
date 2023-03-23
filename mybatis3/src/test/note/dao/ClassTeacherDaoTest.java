@@ -28,8 +28,8 @@ public class ClassTeacherDaoTest {
      * 多对多一次查询
      */
     @Test
-    public void selectClaTeaByCtid() {
-        ClassTeacherMap class_teacher = classTeacherMapDao.selectClaTeaByCtid(5);
+    public void selectClaTeaById() {
+        ClassTeacherMap class_teacher = classTeacherMapDao.selectClaTeaById(5);
         System.out.println(class_teacher);
     }
 
@@ -37,8 +37,8 @@ public class ClassTeacherDaoTest {
      * 多对多分步查询
      */
     @Test
-    public void selectClaTeaByCtid2() {
-        ClassTeacherMap class_teacher = classTeacherMapDao.selectClaTeaByCtid2(5);
+    public void selectClaTeaById2() {
+        ClassTeacherMap class_teacher = classTeacherMapDao.selectClaTeaById2(5);
         System.out.println(class_teacher);
     }
 

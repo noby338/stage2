@@ -3,9 +3,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="note.dao.StudentDao"><!--命名空间，一般为映射文件实体类的全限定名-->
+<mapper namespace="note.dao.StudentDao"><!--命名空间，一般为映射文件实现类的全限定名-->
     <!-- 加上cache标签之后表示当前mapper中产生的数据是"可以"被放到二级缓存中 -->
-    <cache readOnly="true"/>
+<!--    <cache readOnly="true"/>-->
     <!-- insert标签就是写insert语句,id就为调用该SQL的名字，推荐执行对应SQL的方法名
 	-->
     <!-- parameterType:
@@ -47,52 +47,32 @@
         delete from student where id = #{id};
     </delete>
     <!-- 查询必须写返回值类型：底层就是反射创建对象，属性赋值 -->
-    <select id="selectById" resultType="note.entity.Student">
+    <select id="selectById" resultType="Student">
         select *
         from student
         where id = #{id};
     </select>
-    <select id="selectAll" resultType="note.entity.Student">
+    <select id="selectAll" resultType="Student">
         select *
         from student;
     </select>
     <!--使用map为参数传入多个查询参数（对象也可以）-->
-    <select id="selectRangeBirthday" resultType="note.entity.Student">
+    <select id="selectRangeBirthday" resultType="Student">
         select *
         from student
         where birthday between #{dateLow} and #{dateHigh};
     </select>
     <!--模糊查询的方法-->
-    <select id="selectLikeName" resultType="note.entity.Student">
+    <select id="selectLikeName" resultType="Student">
         select *
         from student
         where name like '%' #{name} '%';
     </select>
-    <!--使用自己的对象实现分页查询-->
-    <select id="selectByPage" resultType="Student">
-        <!--SQL中的计算标签bind，SQL中不支持直接计算-->
-        <bind name="startRow" value="(pageNum - 1) * pageSize"/>
-        select * from student limit #{startRow},#{pageSize}
-    </select>
+
     <!--使用pageHelper分页查询-->
-    <select id="selectAllByPageHelper" resultType="note.entity.Student">
+    <select id="selectAllByPageHelper" resultType="Student">
         select *
         from student
     </select>
-
-
-    <!--转译字符和CDATA区-->
-    <select id="test" resultType="note.entity.Student">
-        select *
-        from student
-        where id &lt; 5
-          and id
-          <![CDATA[
-          >
-          ]]>
-          2
-        /*在sql语句中，小于符号无法直接使用，可以使用&lt;转译字符或者CDATA区解决(idea输入大写CD提示)*/
-    </select>
-
 
 </mapper>

@@ -1,7 +1,6 @@
 package note.dao.impl;
 
 import note.dao.StudentDao;
-import note.entity.Page;
 import note.entity.Student;
 import note.util.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -58,11 +57,6 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public List<Student> selectLikeName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<Student> selectByPage(Page page) {
         return null;
     }
 

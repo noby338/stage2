@@ -4,7 +4,7 @@ import note.entity.Student;
 import org.apache.ibatis.annotations.Select;
 
 /**
- * 使用mybatis注解实现sql的书写
+ * mybatis的注解映射
  * @author Noby
  * @since 2022/10/1
  */

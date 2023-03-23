@@ -5,7 +5,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd"><!--dtd文件为约束文件，作为下面xml文件的规范-->
 <configuration>
     <!--导入properties文件，可省略-->
-    <properties resource="db.properties"></properties>
+    <properties resource="db.properties"/>
 
     <!--实体类设置别名-->
     <typeAliases>

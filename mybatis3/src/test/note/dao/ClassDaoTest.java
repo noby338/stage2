@@ -28,7 +28,7 @@ public class ClassDaoTest {
      * 中间表连表查询
      */
     @Test
-    public void selectClassByCid() {
+    public void selectClassById() {
         Class aClass = mapper.selectClassById(1);
         System.out.println(aClass);
     }
@@ -37,7 +37,7 @@ public class ClassDaoTest {
      * 中间表手动映射连表查询
      */
     @Test
-    public void selectClassByCid2() {
+    public void selectClassById2() {
         Class aClass = mapper.selectClassById2(1);
         System.out.println(aClass);
     }

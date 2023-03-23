@@ -15,7 +15,7 @@
         <!--当前servlet的自定义名字，建议和类名相同-->
         <servlet-name>ServletNoteName</servlet-name>
         <!--HttpServletNote类的全限定名-->
-        <servlet-class>note.servlet.ServletNote</servlet-class>
+        <servlet-class>priv.noby.servlet.servlet.ServletNote</servlet-class>
         <!-- 配置初始化参数,通过ServletConfig中的getInitParameter()方法调用（当前servlet可用） -->
         <init-param>
             <param-name>ENCODING</param-name>

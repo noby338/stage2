@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 /**
- * mybatis注解书写sql
+ * mybatis注解映射
  */
 public class StudentDaoTest3 {
     /**

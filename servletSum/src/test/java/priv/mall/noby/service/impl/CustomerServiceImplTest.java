@@ -3,9 +3,10 @@ package priv.mall.noby.service.impl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import priv.mall.noby.entity.Customer;
-import priv.mall.noby.entity.Page;
-import priv.mall.noby.service.CustomerService;
+import priv.noby.servletsum.entity.Customer;
+import priv.noby.servletsum.entity.Page;
+import priv.noby.servletsum.service.CustomerService;
+import priv.noby.servletsum.service.impl.CustomerServiceImpl;
 
 public class CustomerServiceImplTest {
 
@@ -24,7 +25,6 @@ public class CustomerServiceImplTest {
         page.setPageSize(10);
         page.setPageIndex(1);
         Page<Customer> customerPage = customerService.selectByPage(page);
-        System.out.println(customerPage);
     }
 
     @Test

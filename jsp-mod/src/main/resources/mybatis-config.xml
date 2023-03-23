@@ -5,7 +5,7 @@
 <configuration>
     <!--起别名-->
     <typeAliases>
-        <package name="note.pojo"/>
+        <package name="priv.noby.jspmod.pojo"/>
     </typeAliases>
 
     <environments default="development">
@@ -21,7 +21,7 @@
     </environments>
     <mappers>
         <!--扫描mapper-->
-        <package name="note.mapper"/>
+        <package name="priv.noby.jspmod.mapper"/>
 <!--            <mapper resource="mapper/BrandMapper.xml"></mapper>-->
     </mappers>
 </configuration>

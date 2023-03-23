@@ -12,7 +12,7 @@
         <!--单个配置某个全限定名-->
 <!--        <typeAlias type="entity.Student" alias="Student"></typeAlias>-->
         <!--统一配置某个包下的全限定名为类的类名-->
-        <package name="priv.note.entity"/>
+        <package name="priv.noby.mybatis4.entity"/>
     </typeAliases>
 
     <!-- environments：指定配置环境。例如开发、测试、生产环境 -->
@@ -31,6 +31,6 @@
     </environments>
     <mappers>
         <!--统一配置某个包下的xml映射文件（xml的文件名是根据接口名创建），使用该方法的映射文件名和接口名必须相同-->
-        <package name="priv.note.mapper"/>
+        <package name="priv.noby.mybatis4.mapper"/>
     </mappers>
 </configuration>

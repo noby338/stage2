@@ -1,5 +1,6 @@
 package note.dao;
 
+import note.entity.Page;
 import note.entity.Student;
 import note.util.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -31,7 +32,8 @@ public class StudentDaoTest {
     @Test
     public void selectStudentByWhere() {
         Student student = new Student();
-        student.setName("冬梅");
+        student.setName("张");
+        student.setGender(false);
         List<Student> students = studentDao.selectStudentByWhere(student);
         System.out.println("students = " + students);
         sqlSession.close();
@@ -44,6 +46,7 @@ public class StudentDaoTest {
     public void selectStudentByChoose() {
         Student student = new Student();
         student.setName("张");
+        student.setId(2);
         List<Student> students = studentDao.selectStudentByChoose(student);
         System.out.println("students = " + students);
         sqlSession.close();
@@ -78,4 +81,36 @@ public class StudentDaoTest {
         sqlSession.close();
     }
 
+    /**
+     * bind标签
+     * 使用自己的类实现分页查询
+     */
+    @Test
+    public void testSelectRangeBirthdayByEntity() {
+        Page page = new Page();
+        page.setPageNum(1);
+        page.setPageSize(4);
+        List<Student> students = studentDao.selectByPage(page);
+        System.out.println("students = " + students);
+        sqlSession.close();
+
+    }
+
+    /**
+     * 通过实体引用转义字符
+     */
+    @Test
+    public void selectStudentByLt() {
+        List<Student> students = studentDao.selectStudentByLt();
+        System.out.println("students = " + students);
+    }
+
+    /**
+     * 通过Cdata区转义字符
+     */
+    @Test
+    public void selectStudentByCdata() {
+        List<Student> students = studentDao.selectStudentByCdata();
+        System.out.println("students = " + students);
+    }
 }

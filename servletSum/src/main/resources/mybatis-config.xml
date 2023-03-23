@@ -5,7 +5,7 @@
 <configuration>
     <properties resource="db.properties"/>
         <typeAliases>
-            <package name="priv.mall.noby.entity"/>
+            <package name="priv.noby.servletsum.entity"/>
         </typeAliases>
 
     <!--    <plugins>-->
@@ -26,6 +26,6 @@
     </environments>
 
     <mappers>
-        <package name="priv.mall.noby.dao"/>
+        <package name="priv.noby.servletsum.dao"/>
     </mappers>
 </configuration>

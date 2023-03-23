@@ -6,6 +6,6 @@
 
 <!--    listener的配置方法-->
 <!--    <listener>-->
-<!--        <listener-class>note.listener.MyServletContextListener</listener-class>-->
+<!--        <listener-class>MyServletContextListener</listener-class>-->
 <!--    </listener>-->
 </web-app>

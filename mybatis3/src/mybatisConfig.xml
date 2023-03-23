@@ -8,12 +8,16 @@
     <properties resource="db.properties"/>
     <settings>
         <!--开启延迟加载-->
-        <setting name="lazyLoadingEnabled" value="false"/>
+        <!--是否开启延迟加载。如果开启，当查询结果中有关联对象时，不会立即查询关联对象，而是等到使用时再查询。
+        可以减少数据库的查询次数和网络带宽的占用，提高程序的性能和效率。默认为 false。-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--是否开启积极的延迟加载。则表示启用激进延迟加载。这种方式下，MyBatis会在访问某些数据时自动加载相关的数据，以便在后续使用中更加高效。
+        但是，如果数据结构非常复杂或者数据量非常大，那么自动加载的数据可能会很多，从而导致程序变慢。因此，在使用这种方式时需要谨慎，需要根据实际情况进行配置和调整。默认为false-->
         <setting name="aggressiveLazyLoading" value="false"/>
-        <!--启用缓存-->
-        <setting name="cacheEnabled" value="false"/>
+        <!--启用全局二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
         <!--开启驼峰转换-->
-        <setting name="mapUnderscoreToCamelcase" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
     <!--实体类设置别名-->

@@ -12,5 +12,5 @@ import java.util.List;
 public class Dep {
     private Integer id;
     private String name;
-    private List<Emp> emps;
+    private List<Emp> empList;
 }

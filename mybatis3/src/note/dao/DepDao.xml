@@ -6,16 +6,16 @@
 <mapper namespace="note.dao.DepDao"><!--命名空间，一般为映射文件实体类的全限定名-->
     <!--一对多查询（使用连接一步查询）-->
     <select id="selectDepById" resultMap="depMap">
-        SELECT dep.id, dep.name, emp.id eid, emp.name ename
-        FROM dep,
+        select dep.id, dep.name, emp.id eid, emp.name ename
+        from dep,
              emp
-        WHERE dep.id = emp.did
-          AND dep.id = 1
+        where dep.id = emp.did
+          and dep.id = 1
     </select>
     <resultMap id="depMap" type="Dep">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
-        <collection property="emps" ofType="Emp">
+        <collection property="empList" ofType="Emp">
             <id property="id" column="eid"/>
             <result property="name" column="ename"/>
         </collection>
@@ -30,7 +30,7 @@
     <resultMap id="depMap2" type="Dep">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
-        <collection property="emps" column="id" ofType="Emp" select="selectEmpById"/>
+        <collection property="empList" column="id" ofType="Emp" select="selectEmpById"/>
     </resultMap>
     <select id="selectEmpById" resultType="Emp">
         select *
