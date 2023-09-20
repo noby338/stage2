@@ -1,0 +1,10 @@
+### Servlet请求过滤
+GET http://localhost:8080/filter/dServlet
+### html请求过滤
+GET http://localhost:8080/filter/g.html
+### jsp请求过滤
+GET http://localhost:8080/filter/a.jsp
+### 文件夹请求过滤
+GET http://localhost:8080/filter/filterdir/b.jsp
+### 文件夹请求过滤2
+GET http://localhost:8080/filter/filterdir/filterdir2/e.jsp

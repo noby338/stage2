@@ -7,6 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+/**
+ * 利用反射实现简化Servlet的书写
+ * 所有的Servlet都继承该BaseServlet
+ *
+ * @author Noby
+ * @since 2023/3/25 16:47
+ */
 public class BaseServlet extends HttpServlet {
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

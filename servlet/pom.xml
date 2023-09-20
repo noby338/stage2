@@ -38,6 +38,7 @@
                 <configuration>
                     <port>8080</port>
                     <path></path>
+                    <contextReloadable>true</contextReloadable>
                     <uriEncoding>UTF-8</uriEncoding>
                 </configuration>
             </plugin>
@@ -49,6 +50,14 @@
                     <target>6</target>
                 </configuration>
             </plugin>
+            <!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <source>6</source>-->
+<!--                    <target>6</target>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

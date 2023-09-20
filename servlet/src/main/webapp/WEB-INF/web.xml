@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <!--配置ServletContext初始化参数，getInitParameter()方法调用（区别于init-param，所有的servlet都可用）-->
+    <!--配置ServletContext初始化参数，servletConfig.getServletContext().getInitParameter()方法调用（区别于init-param，所有的servlet都可用）-->
     <context-param>
         <param-name>info2</param-name>
         <param-value>something2</param-value>
@@ -16,7 +16,7 @@
         <servlet-name>ServletNoteName</servlet-name>
         <!--HttpServletNote类的全限定名-->
         <servlet-class>priv.noby.servlet.servlet.ServletNote</servlet-class>
-        <!-- 配置初始化参数,通过ServletConfig中的getInitParameter()方法调用（当前servlet可用） -->
+        <!-- 配置初始化参数,通过ServletConfig.getInitParameter()方法调用（当前servlet可用） -->
         <init-param>
             <param-name>ENCODING</param-name>
             <param-value>ISO-8859-1</param-value>
@@ -34,7 +34,7 @@
         <!--与servlet中的servlet-name相同-->
         <servlet-name>ServletNoteName</servlet-name>
         <!--servlet路径映射-->
-        <url-pattern>/ServletNote</url-pattern>
+        <url-pattern>/servletNote</url-pattern>
     </servlet-mapping>
 
     <!--设置session的失效时间，默认为30分钟-->

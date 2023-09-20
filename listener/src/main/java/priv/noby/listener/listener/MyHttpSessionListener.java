@@ -10,7 +10,10 @@ import javax.servlet.http.HttpSessionListener;
 import java.util.HashMap;
 
 /**
- * 通过监听器移除移除已登录的用户
+ * 通过监听器监听session的状态，当session移除时，同时移除ServletContext中的该用户
+ * 
+ * @author Noby
+ * @since 2023/3/25 19:20
  */
 @WebListener
 public class MyHttpSessionListener implements HttpSessionListener {

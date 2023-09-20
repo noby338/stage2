@@ -26,7 +26,7 @@ ${applicationScope.info}<br>
 <hr>
 <%--EL运算符--%>
 ${not empty info}
-
+<%--
     /或div
     %或mod
     ==或eq
@@ -39,9 +39,11 @@ ${not empty info}
     !或not
     ||或or
     empty
+--%>
 
     <hr>
     <%--EL一共11个内置对象。这11个内置对象中有10个是Map类型的，最后一个是pageContext对象--%>
+<%--
     pageScope 取page域中的值
     requestScope 取request域中的值
     sessionScope 取session域中的值
@@ -55,6 +57,7 @@ ${not empty info}
     initParam 获取SerlvetContext初始化参数
     cookie 获取Cookie的值
     pageContext 获取其它内置对象
+--%>
 
 
     <a href="ELNote.jsp">ELNote.jsp</a><br/>
@@ -62,12 +65,15 @@ ${not empty info}
     <a href="/jsp/ELNote.jsp">ELNote.jsp</a><br/>
     <!-- 绝对路径的灵活写法 -->
     <a href="<%=request.getContextPath() %>/ELNote.jsp">ELNote.jsp</a><br/>
-    <a href="<%=((HttpServletRequest)pageContext.getRequest()).getContextPath()%>/ELNote.jsp">ELNote.jsp</a><br/>
+    <a href="<%=((HttpServletRequest)pageContext.getRequest()).getContextPath()%>/ELNote.jsp">ELNote.jsp</a>
     <a href="${pageContext.request.contextPath}/ELNote.jsp">ELNote.jsp</a>
+    <%--利用jstl--%>
+    <a href="<c:url value='/ELNote.jsp'/>">ELNote.jsp</a><br/>
     <hr>
 
     <%--EL函数库（使用前导入jstl的jar包和jsp标签库）--%>
     ${fn:toUpperCase("java")}<%--表示使用fn标签中的toUpperCase()方法--%>
+<%--
         String toUpperCase(String input)：
         String toLowerCase(String input)：
         int indexOf(String input, String substring)：
@@ -84,6 +90,7 @@ ${not empty info}
         String[] split(String input, String delimiters)：
         int length(Object obj)：
         String join(String array[], String separator)： 拼接
+--%>
     <hr>
 </body>
 </html>

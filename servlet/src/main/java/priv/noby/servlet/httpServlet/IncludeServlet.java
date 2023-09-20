@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * 请求的包含
  */
-@WebServlet("/IncludeServlet")
+@WebServlet("/includeServlet")
 public class IncludeServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

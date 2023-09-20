@@ -1,0 +1,4 @@
+### requestServlet
+GET http://localhost:8080/servlet/requestServletNote
+
+

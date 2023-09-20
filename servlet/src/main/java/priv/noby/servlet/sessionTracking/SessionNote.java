@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 @WebServlet("/sessionNote")
 public class SessionNote extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.setAttribute("password","123");
         response.setContentType("text/html;charSet=UTF-8");
@@ -26,7 +26,7 @@ public class SessionNote extends HttpServlet {
         System.out.println(password);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doGet(request, response);
     }
 }

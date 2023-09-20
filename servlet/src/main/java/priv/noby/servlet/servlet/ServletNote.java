@@ -9,21 +9,6 @@ import javax.servlet.ServletResponse;
  * 通过配置web.xml实现servlet的访问
  * servlet的生命周期
  * ServletConfig类
- * 本类通过web.xml配置
- */
-//@WebServlet(name = "servletNote",
-//        urlPatterns = {"/servletNote"},
-//        initParams = {
-//                @WebInitParam(name = "ENCODING", value = "UTF-8")
-//        },
-//        loadOnStartup = -1
-//)
-/*
-name属性可随意
-ServletConfig初始化对象的参数
-loadOnStartup
-（1）负整数:第一次访问时创建Servlet对象
-（2）0或正整数:服务器启动时创建Servlet对象，数字越小优先级越高
  */
 public class ServletNote implements Servlet {
     private ServletConfig servletConfig = null;//该对象保存的即为<servlet>标签内的信息
@@ -41,6 +26,7 @@ public class ServletNote implements Servlet {
         this.servletConfig = servletConfig;
         System.out.println("init执行");
         System.out.println("servletConfig.getInitParameter(\"ENCODING\") = " + servletConfig.getInitParameter("ENCODING"));
+        System.out.println("servletConfig.getServletContext().getInitParameter(\"info2\") = " + servletConfig.getServletContext().getInitParameter("info2"));
     }
 
     /**

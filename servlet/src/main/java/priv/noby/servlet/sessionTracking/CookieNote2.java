@@ -16,7 +16,7 @@ import java.net.URLDecoder;
 @WebServlet("/cookieNote2")
 public class CookieNote2 extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charSet=UTF-8");
         Cookie[] cookies = req.getCookies();
         PrintWriter writer = resp.getWriter();
@@ -42,7 +42,7 @@ public class CookieNote2 extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req,resp);
     }
 }

@@ -18,7 +18,7 @@
     <ul>
         <c:forEach items="${applicationScope.map}" var="entry">
             <li>
-                ${entry.key}<a href="${pageContext.request.contextPath}/loginServlet?op=out">退出</a>
+                ${entry.key}
             </li>
         </c:forEach>
     </ul>

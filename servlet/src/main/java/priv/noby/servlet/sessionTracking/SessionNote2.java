@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 @WebServlet("/sessionNote2")
 public class SessionNote2 extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charSet=UTF-8");
         PrintWriter writer = response.getWriter();
         HttpSession session = request.getSession();
@@ -28,7 +28,7 @@ public class SessionNote2 extends HttpServlet {
         writer.write(format);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doGet(request, response);
     }
 }

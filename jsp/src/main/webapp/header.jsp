@@ -1,3 +1,4 @@
+<%--这是一个同步的复用页面，需要来自servlet的转发--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

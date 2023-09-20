@@ -15,6 +15,7 @@ public class UserServlet extends BaseServlet {
     UserService userService = new UserServiceImpl();
 
     public String login (HttpServletRequest request, HttpServletResponse response) {
+        System.out.println(1111);
         HttpSession session = request.getSession();
         String name = request.getParameter("name");
         String password = request.getParameter("password");

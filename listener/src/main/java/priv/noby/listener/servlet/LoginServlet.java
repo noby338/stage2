@@ -17,10 +17,11 @@ import java.util.Map;
 public class LoginServlet extends HttpServlet {
     private UserService userService = new UserService();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
         ServletContext servletContext = this.getServletContext();//this表示当前servlet对象
+        //这里的map已经在监听器初始化的时候创建了
         Map<String, User> map = (Map<String, User>) servletContext.getAttribute("map");
         String op = request.getParameter("op");
         if ("login".equals(op)) {
@@ -37,6 +38,7 @@ public class LoginServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             if (user != null) {
                 map.remove(user.getUsername());
+                //当session被销毁时，自动调用监听器移除map中的该用户
                 session.invalidate();
                 response.sendRedirect("/listener/login_list.jsp");
             }

@@ -1,0 +1,5 @@
+### servletContext的写入
+GET http://localhost:8080/servlet/servletContextNote
+
+### servletContext的获取
+GET http://localhost:8080/servlet/servletContextNote2

@@ -1,0 +1,5 @@
+### httpServletNote,get
+GET http://localhost:8080/servlet/httpServletNote
+### httpServletNote,pot
+POST http://localhost:8080/servlet/httpServletNote
+

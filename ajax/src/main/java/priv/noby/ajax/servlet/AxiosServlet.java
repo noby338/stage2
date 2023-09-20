@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 @WebServlet("/axiosServlet")
 public class AxiosServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String info = request.getParameter("info");
         System.out.println("username = " + username);

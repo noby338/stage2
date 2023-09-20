@@ -27,11 +27,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
@@ -76,11 +71,11 @@
     </dependencies>
 
     <!-- 这里定义了maven 编译的jdk和代码的编码方式(重新编译后的警告) -->
-<!--    <properties>-->
-<!--        <maven.compiler.source>1.8</maven.compiler.source>-->
-<!--        <maven.compiler.target>1.8</maven.compiler.target>-->
-<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-<!--    </properties>-->
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <build>
         <plugins>
@@ -92,6 +87,8 @@
                     <port>8080</port>
                     <path></path>
                     <uriEncoding>UTF-8</uriEncoding>
+                    <!--热部署-->
+                    <contextReloadable>true</contextReloadable>
                 </configuration>
             </plugin>
             <plugin>

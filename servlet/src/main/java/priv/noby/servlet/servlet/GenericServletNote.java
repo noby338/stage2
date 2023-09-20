@@ -31,7 +31,7 @@ public class GenericServletNote extends GenericServlet {
      */
 
     /**
-     * servlet类的init()方法
+     * servlet接口的init()方法
      * @param config
      * @throws ServletException
      */

@@ -14,14 +14,19 @@ import java.io.IOException;
  * HttpServlet和Servlet的继承关系
  * 通过注解配置Servlet的访问路径
  */
-
 @WebServlet(urlPatterns = "/httpServletNote",//tomcat访问路径
         initParams = {@WebInitParam(name = "username", value = "noby"), @WebInitParam(name = "password", value = "123")},//servlet初始化参数
-        loadOnStartup = 0)//servlet的初始化时机
+        loadOnStartup = 0)
 /*
+name属性可随意
+ServletConfig初始化对象的参数
+loadOnStartup
+（1）负整数:第一次访问时创建Servlet对象
+（2）0或正整数:服务器启动时创建Servlet对象，数字越小优先级越高
+
 @WebServlet的使用注意：
-    @WebServlet的value属性名等同于urlPattern属性名，等同于直接书写属性值
-    @WebServlet(urlPattern = {"/urlPattern1","/urlPattern2"})//一个servlet可以配置多个urlPattern
+    @WebServlet的value属性名等同于 urlPatterns 属性名，等同于直接书写属性值
+    @WebServlet(urlPatterns = {"/urlPattern1","/urlPattern2"})//一个servlet可以配置多个urlPattern
     @WebServlet(urlPatterns = "/user/select")//精确匹配
     @WebServlet(urlPatterns = "/user/*")//目录匹配(*表示任何内容)
     @WebServlet("*.do")//扩展名匹配
@@ -42,7 +47,7 @@ import java.io.IOException;
  */
 public class HttpServletNote extends HttpServlet {
     /**
-     * Servlet类中的方法
+     * Servlet接口中的方法
      *
      * @param req
      * @param res
@@ -66,15 +71,20 @@ public class HttpServletNote extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.service(req, resp);
+        //调用的为ServletConfig类的getInitParameter()，getServletContext()。他们都是来自GenericServlet的重写，
+        System.out.println("this.getInitParameter(\"username\") = " + this.getInitParameter("username"));
+        System.out.println("getInitParameter(\"password\") = " + getInitParameter("password"));
+        System.out.println("getServletContext().getInitParameter(\"info2\") = " + getServletContext().getInitParameter("info2"));
     }
 
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("HttpServletNote.doPost");
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("HttpServletNote.doGet");
-        this.doPost(request, response);
+//        this.doPost(request, response);
     }
 }

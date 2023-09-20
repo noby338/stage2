@@ -12,8 +12,6 @@
 <%--<jsp:include page="/HeaderAndFooterServlet?method=getHeader"/>--%>
 <%--动作,在jsp中引入其他页面，路径为服务器路径，异步方式--%>
 <jsp:include page="/footer.jsp"/>
-<%--BaseServlet的使用--%>
-<jsp:include page="/HeaderAndFooterServlet?method=getFooter"/>
 <br>
 
 <%--jsp本质上为一个servlet类，其java源代码位于target\tomcat\work\Tomcat\localhost\jsp\org\apache\jsp\JspNote_jsp.java--%>
@@ -23,12 +21,12 @@
     //java的对象需要使用page指令的import属性导包
     Date date = new Date();
     //response为jsp的内置对象
-    response.getWriter().write(String.valueOf(date));
+    response.getWriter().write(String.valueOf(date) + "<br/>");
     System.out.println("java对象" + date);
 
     //region jsp九大内置对象(JSP中特有的域：Page、PageContext)
-     //page 就是this
-    out.write("page==this:" + (page == this) + "<br/>");
+    //page 就是this
+    response.getWriter().write("page==this:" + (page == this) + "<br/>");
     //request
     request.setAttribute("requestAttr", "request内置对象");
     //response
@@ -42,9 +40,9 @@
     //config ServletConfig
     out.write(config.getServletName() + "<br/>");
     //exception
-//        if(true) {
-//            throw new RuntimeException("出现异常");
-//        }
+    if (false) {
+        throw new RuntimeException("出现异常");
+    }
     //pageContext 其他的八个jsp内置对象都可以通过pageContext对象操作(只演示了5个)
     // page,request,session,ServletContext 为jsp的域属性
     // request,session,ServletContext 为servlet的域属性
@@ -82,7 +80,7 @@
 <%--静态资源和java脚本嵌套使用--%>
 <table>
     <%
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 3; i++) {
     %>
     <tr>
         <td>
@@ -94,6 +92,5 @@
     </tr>
     <%} %>
 </table>
-
 
 </body>

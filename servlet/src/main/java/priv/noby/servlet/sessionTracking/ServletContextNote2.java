@@ -26,7 +26,7 @@ public class ServletContextNote2 extends HttpServlet {
         PrintWriter writer = response.getWriter();
         ServletContext servletContext = this.getServletContext();//（上下文对象）来自GenericServlet对象，它是在服务器启动时就通过服务器自动创建，所有用户共享上下文对象
         ServletConfig servletConfig = this.getServletConfig();
-        String infoFormat = String.format("获取到servletContext attribute %s:%s", "info", servletContext.getAttribute("info"));//来自servletContextServletNote设置的域属性
+        String infoFormat = String.format("获取到servletContext attribute %s:%s", "info", servletContext.getAttribute("info"));//来自servletContextNote设置的域属性
         System.out.println(infoFormat);
         writer.write(infoFormat + "\n");
         String info2Format = String.format("获取到servletContext initParameter %s:%s", "info2", servletContext.getInitParameter("info2"));//来自xml，所有的servlet均可访问
@@ -39,4 +39,5 @@ public class ServletContextNote2 extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.doGet(request, response);
-    }}
+    }
+}

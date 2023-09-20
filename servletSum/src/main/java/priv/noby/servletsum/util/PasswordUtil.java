@@ -2,16 +2,12 @@ package priv.noby.servletsum.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 
 /**
  * @author Noby
  * @since 2022/10/7
  */
 public class PasswordUtil {
-    public static void main(String[] args) {
-        System.out.println("getMD5String(\"123\") = " + getMD5String("123"));
-    }
     public static String getMD5String(String str) {
         try {
             // 创建支持MD5算法加密的核心类

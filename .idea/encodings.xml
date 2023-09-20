@@ -8,6 +8,8 @@
     <file url="file://$PROJECT_DIR$/listener/src/main/java/priv/noby/listener/listener/MyHttpSessionListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/listener/src/main/java/priv/noby/listener/listener/MyServletContextListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/listener/src/main/java/priv/noby/listener/servlet/LoginServlet.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-generator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis-generator/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/servlet/servletNote.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/servlet/src/main/java/priv/noby/servlet/httpServlet/RequestServletNote.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/servlet/src/main/java/priv/noby/servlet/httpServlet/ResponseServletNote.java" charset="UTF-8" />

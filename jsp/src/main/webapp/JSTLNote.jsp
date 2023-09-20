@@ -1,3 +1,5 @@
+<%--JSTL主要用于if条件判断，循环等--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--/jstl/core为jstl核心--%>
@@ -50,11 +52,6 @@
 
 <hr>
 <%--c:url路径--%>
-<a href="JSTLNote.jsp">JSTLNote.jsp</a><br/>
-<a href="/jsp/JSTLNote.jsp">JSTLNote.jsp</a><br/><%--jsp中不建议使用绝对路径--%>
-<a href="<%=request.getContextPath()%>/JSTLNote.jsp">JSTLNote.jsp</a><br/>
-<a href="<%=((HttpServletRequest)pageContext.getRequest()).getContextPath()%>/JSTLNote.jsp">JSTLNote.jsp</a><br/>
-<a href="${pageContext.request.contextPath }/JSTLNote.jsp">JSTLNote.jsp</a><br/>
 <a href="<c:url value='/JSTLNote.jsp'/>">JSTLNote.jsp</a><br/>
 </body>
 </html>
